@@ -75,8 +75,8 @@ class EasingView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         invalidate()
     }
 
-    fun plot2(point: Float) {
-        rectX = (width - WIDTH) * point
+    fun plot2(point: Double) {
+        rectX = ((width - WIDTH) * point).toFloat()
         invalidate()
     }
 
