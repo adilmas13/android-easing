@@ -1,32 +1,44 @@
 package com.android_easing
 
-import android.util.Log
-import java.util.*
-
 class EasingManager {
+    private val ticker = Ticker()
+
     private var onStart: (() -> Unit)? = null
     private var onEnd: (() -> Unit)? = null
     private var onProgress: ((progress: Float) -> Unit)? = null
-    val timer = Timer()
-    private var fps = 60L
+    private var duration = 0f
+
+    constructor(duration: Float) {
+        this.duration = duration
+    }
+
+    fun onProgress(func: (progress: Float) -> Unit): EasingManager {
+        this.onProgress = func
+        return this
+    }
+
+    fun onStart(func: () -> Unit): EasingManager {
+        this.onStart = func
+        return this
+    }
+
+    fun onEnd(func: () -> Unit): EasingManager {
+        this.onEnd = func
+        return this
+    }
 
     fun ease() {
-        val duration = 5 * 1000f
         val previousTime = System.currentTimeMillis()
-        val timerTask = object : TimerTask() {
-            override fun run() {
-                val deltaTime = System.currentTimeMillis() - previousTime
-                val progress = deltaTime / duration
-                if (deltaTime >= duration) {
-                    cancel();
-                }
+        ticker.onTick { time ->
+            val deltaTime = time - previousTime
+            var progress = deltaTime / duration
+            if (deltaTime >= duration) {
+                cancel()
             }
+            progress = progress.coerceAtMost(1.0f)
+            onProgress?.invoke(progress)
         }
-        timer.scheduleAtFixedRate(timerTask, 0, 1000 / fps)
     }
 
-    fun cancel() {
-        Log.d("WOOOW", "CANCELLING")
-        timer.cancel()
-    }
+    fun cancel() = ticker.cancel()
 }
