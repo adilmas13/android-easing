@@ -6,13 +6,20 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 
 class EasingView(context: Context,  attrs: AttributeSet) : View(context, attrs) {
     private val borderPaint = Paint()
     private val linePaint = Paint()
     private val linePath = Path()
+
+    private var rectX = 0.0f
+
+    companion object{
+        const val WIDTH = 100f
+        const val HEIGHT = 100f
+        const val TOP = 50f
+    }
 
     init {
         borderPaint.apply {
@@ -32,9 +39,17 @@ class EasingView(context: Context,  attrs: AttributeSet) : View(context, attrs) 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         canvas?.let {
-            drawBorder(it)
-            drawEase(it)
+            drawRect(it)
+//            drawBorder(it)
+//            drawEase(it)
         }
+    }
+
+    private fun drawRect(canvas: Canvas){
+        canvas.drawRect(rectX, TOP, rectX+ WIDTH, TOP+ HEIGHT, Paint().apply {
+            color = Color.BLUE
+            style=Paint.Style.FILL
+        })
     }
 
     private fun drawBorder(canvas: Canvas){
@@ -59,6 +74,13 @@ class EasingView(context: Context,  attrs: AttributeSet) : View(context, attrs) 
         }
         invalidate()
     }
+
+    fun plot2(point: Float){
+        rectX = (width - WIDTH) * point
+        invalidate()
+    }
+
+
 
     fun clear(){
         linePath.reset()

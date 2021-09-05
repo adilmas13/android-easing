@@ -1,15 +1,9 @@
 package com.android_easing
 
-import android.R.attr
 import android.animation.ValueAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import com.android_easing.databinding.ActivityMainBinding
-import android.R.attr.x
-import java.lang.Math.*
-import kotlin.math.pow
 
 
 class MainActivity : AppCompatActivity() {
@@ -34,8 +28,19 @@ class MainActivity : AppCompatActivity() {
 
 //val result = 1 - (1 - x).pow(3);
             val result = x * x * x * x * x
-            binding.graph.plot(result.toDouble())
+//            binding.graph.plot2(result)
+            binding.graph.plot2(easeOutElastic(x))
         }
         animator.start()
     }
+
+    private fun easeOutElastic(x: Float): Float{
+        val c4 = (2 * Math.PI) / 3
+        return when(x){
+            0f -> 0f
+            1f -> 1f
+            else -> Math.pow(2.0, -10.0 * x).toFloat() * Math.sin((x * 10.0 - 0.75) * c4).toFloat() + 1f
+        }
+    }
+
 }
