@@ -8,9 +8,9 @@ class EasingManager(private var ease: Ease = Linear(), private var duration: Flo
 
     private var onStart: (() -> Unit)? = null
     private var onEnd: (() -> Unit)? = null
-    private var onProgress: ((progress: Double) -> Unit)? = null
+    private var onProgress: ((value: Double, progress: Double) -> Unit)? = null
 
-    fun onProgress(func: (progress: Double) -> Unit): EasingManager {
+    fun onProgress(func: (value: Double, progress: Double) -> Unit): EasingManager {
         this.onProgress = func
         return this
     }
@@ -30,13 +30,13 @@ class EasingManager(private var ease: Ease = Linear(), private var duration: Flo
         onStart?.invoke()
         ticker.onTick { time ->
             val deltaTime = time - previousTime
-            var progress = deltaTime / duration
+            var progress = (deltaTime / duration).toDouble()
             if (deltaTime >= duration) {
                 cancel()
                 onEnd?.invoke()
             }
-            progress = progress.coerceAtMost(1.0f)
-            onProgress?.invoke(ease.calculate(progress))
+            progress = progress.coerceAtMost(1.0)
+            onProgress?.invoke(ease.calculate(progress), progress)
         }
     }
 

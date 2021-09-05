@@ -40,8 +40,8 @@ class EasingView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         super.onDraw(canvas)
         canvas?.let {
             drawRect(it)
-//            drawBorder(it)
-//            drawEase(it)
+            drawBorder(it)
+            drawEase(it)
         }
     }
 
@@ -64,9 +64,9 @@ class EasingView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         canvas.drawPath(linePath, linePaint)
     }
 
-    fun plot(point: Double) {
-        val x = (width * point).toFloat()
-        val y = (height * (1 - point)).toFloat()
+    fun plot(fraction: Double, time: Double) {
+        val x = (width * time).toFloat()
+        val y = (height * (1 - fraction)).toFloat()
         if (linePath.isEmpty) {
             linePath.moveTo(x, y)
         } else {

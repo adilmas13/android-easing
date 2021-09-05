@@ -1,9 +1,12 @@
 package com.android_easing
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.android_easing.databinding.ActivityMainBinding
 import com.android_easing.easing.EaseInOutElastic
+import com.android_easing.easing.EaseInOutSine
+import com.android_easing.easing.Linear
 
 
 class MainActivity : AppCompatActivity() {
@@ -14,8 +17,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val easing =
-            EasingManager(ease = EaseInOutElastic(), duration = 2000f)
-                .onProgress { binding.graph.plot2(it) }
+            EasingManager(ease = EaseInOutElastic(), duration = 500f)
+                .onProgress { value, progress ->
+                    binding.graph.plot(value, progress)
+                    Log.d("HERE", "$value == $progress")
+                }
         binding.btn.setOnClickListener { easing.ease() }
         binding.btnPause.setOnClickListener { easing.cancel() }
     }
