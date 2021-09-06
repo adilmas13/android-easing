@@ -11,7 +11,7 @@ interface Ease {
 
 /* Linear*/
 class Linear : Ease {
-    override fun calculate(x: Double) = x.toDouble()
+    override fun calculate(x: Double) = x
 }
 
 /*Sine*/

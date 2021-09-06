@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.android_easing.databinding.ActivityMainBinding
 import com.android_easing.easing.EaseInOutElastic
 import com.android_easing.easing.EaseInOutSine
+import com.android_easing.easing.EaseInSine
 import com.android_easing.easing.Linear
 
 
@@ -18,10 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val easing =
             EasingManager(ease = EaseInOutElastic(), duration = 500f)
-                .onProgress { value, progress ->
-                    binding.graph.plot(value, progress)
-                    Log.d("HERE", "$value == $progress")
-                }
+                .onProgress { value, progress -> binding.graph.plot(value, progress) }
         binding.btn.setOnClickListener { easing.ease() }
         binding.btnPause.setOnClickListener { easing.cancel() }
     }
