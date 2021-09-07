@@ -1,7 +1,4 @@
-package com.android_easing
-
-import com.android_easing.easing.Ease
-import com.android_easing.easing.Linear
+package com.adilmas13.library
 
 class EasingManager(private var ease: Ease = Linear(), private var duration: Float) {
     private val ticker = Ticker()

@@ -1,4 +1,4 @@
-package com.android_easing
+package com.adilmas13.library
 
 import java.util.*
 

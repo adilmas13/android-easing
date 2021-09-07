@@ -4,21 +4,20 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android_easing.databinding.ActivityMainBinding
-import com.android_easing.easing.*
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private var easing: EasingManager? = null
+    private var easing: com.adilmas13.library.EasingManager? = null
 
-    private val list = mutableListOf<Ease>().apply {
-        add(Linear())
-        add(EaseInSine())
-        add(EaseOutSine())
-        add(EaseInOutSine())
-        add(EaseInElastic())
-        add(EaseOutElastic())
-        add(EaseInOutElastic())
+    private val list = mutableListOf<com.adilmas13.library.Ease>().apply {
+        add(com.adilmas13.library.Linear())
+        add(com.adilmas13.library.EaseInSine())
+        add(com.adilmas13.library.EaseOutSine())
+        add(com.adilmas13.library.EaseInOutSine())
+        add(com.adilmas13.library.EaseInElastic())
+        add(com.adilmas13.library.EaseOutElastic())
+        add(com.adilmas13.library.EaseInOutElastic())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +29,8 @@ class MainActivity : AppCompatActivity() {
             adapter = EaseAdapter(list) { ease ->
                 easing?.destroy()
                 binding.graph.clear()
-                easing = EasingManager(ease = ease, duration = 2000f).onProgress { value, progress -> binding.graph.plot(value, progress) }
+                easing = com.adilmas13.library.EasingManager(ease = ease, duration = 2000f)
+                    .onProgress { value, progress -> binding.graph.plot(value, progress) }
                 easing?.start()
             }
         }

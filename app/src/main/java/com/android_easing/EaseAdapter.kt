@@ -3,8 +3,8 @@ package com.android_easing
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.adilmas13.library.Ease
 import com.android_easing.databinding.AdapterEaseBinding
-import com.android_easing.easing.Ease
 
 class EaseAdapter(var eases: List<Ease>, var onClick:(ease: Ease) -> Unit): RecyclerView.Adapter<EaseAdapter.EaseViewHolder>() {
 
@@ -20,7 +20,7 @@ class EaseAdapter(var eases: List<Ease>, var onClick:(ease: Ease) -> Unit): Recy
 
     inner class EaseViewHolder(var binding: AdapterEaseBinding): RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(ease: Ease) {
+        fun bind(ease: com.adilmas13.library.Ease) {
             binding.tvEase.text = ease.javaClass.simpleName
             binding.tvEase.setOnClickListener { onClick(ease) }
         }

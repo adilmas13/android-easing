@@ -1,4 +1,4 @@
-package com.android_easing.easing
+package com.adilmas13.library
 
 import kotlin.math.PI
 import kotlin.math.cos

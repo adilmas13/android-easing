@@ -1,9 +1,10 @@
-package com.android_easing
+package com.android_easing.view
 
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.View
+import com.android_easing.pxToDP
 
 class EasingView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 

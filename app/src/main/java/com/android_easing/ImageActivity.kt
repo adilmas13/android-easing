@@ -3,8 +3,8 @@ package com.android_easing
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.adilmas13.library.*
 import com.android_easing.databinding.ActivityImageBinding
-import com.android_easing.easing.*
 
 
 class ImageActivity : AppCompatActivity() {
@@ -29,7 +29,8 @@ class ImageActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@ImageActivity)
             adapter = EaseAdapter(list) { ease ->
                 easing?.destroy()
-                easing = EasingManager(ease = ease, duration = 2000f).onProgress { value, _ ->
+                easing = EasingManager(ease = ease, duration = 2000f)
+                    .onProgress { value, _ ->
                     binding.ivImage.alpha = value.toFloat()
                 }
                 easing?.start()

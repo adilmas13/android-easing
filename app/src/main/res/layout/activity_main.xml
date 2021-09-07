@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.android_easing.EasingView
+    <com.android_easing.view.EasingView
         android:id="@+id/graph"
         android:layout_width="match_parent"
         android:layout_height="200dp"

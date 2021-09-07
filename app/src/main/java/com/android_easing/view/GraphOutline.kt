@@ -1,4 +1,4 @@
-package com.android_easing
+package com.android_easing.view
 
 import android.graphics.Canvas
 import android.graphics.Color
