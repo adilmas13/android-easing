@@ -29,4 +29,8 @@ class EaseLine {
             path.lineTo(x, y)
         }
     }
+
+    fun clear() {
+        path.reset()
+    }
 }

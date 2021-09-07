@@ -57,4 +57,8 @@ class EasingView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         updateCircle()
         invalidate()
     }
+
+    fun clear(){
+        easeLine.clear()
+    }
 }

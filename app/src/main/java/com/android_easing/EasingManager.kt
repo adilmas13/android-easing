@@ -25,7 +25,7 @@ class EasingManager(private var ease: Ease = Linear(), private var duration: Flo
         return this
     }
 
-    fun ease() {
+    fun start() {
         val previousTime = System.currentTimeMillis()
         onStart?.invoke()
         ticker.onTick { time ->
@@ -41,4 +41,9 @@ class EasingManager(private var ease: Ease = Linear(), private var duration: Flo
     }
 
     fun cancel() = ticker.cancel()
+
+    fun destroy() {
+        ticker.cancel()
+        ticker.destroy()
+    }
 }

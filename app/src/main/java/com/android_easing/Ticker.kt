@@ -15,4 +15,6 @@ class Ticker(private var fps: Float = 60f) {
     }
 
     fun cancel() = timer.cancel()
+
+    fun destroy() = timer.purge()
 }
