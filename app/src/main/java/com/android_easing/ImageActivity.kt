@@ -3,12 +3,12 @@ package com.android_easing
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.android_easing.databinding.ActivityMainBinding
+import com.android_easing.databinding.ActivityImageBinding
 import com.android_easing.easing.*
 
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class ImageActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityImageBinding
     private var easing: EasingManager? = null
 
     private val list = mutableListOf<Ease>().apply {
@@ -23,14 +23,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityImageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.rvEase.apply {
-            layoutManager = LinearLayoutManager(this@MainActivity)
+            layoutManager = LinearLayoutManager(this@ImageActivity)
             adapter = EaseAdapter(list) { ease ->
                 easing?.destroy()
-                binding.graph.clear()
-                easing = EasingManager(ease = ease, duration = 2000f).onProgress { value, progress -> binding.graph.plot(value, progress) }
+                easing = EasingManager(ease = ease, duration = 2000f).onProgress { value, _ ->
+                    binding.ivImage.alpha = value.toFloat()
+                }
                 easing?.start()
             }
         }
