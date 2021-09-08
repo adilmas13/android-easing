@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity() {
         add(EaseOutQuint())
         add(EaseInOutQuint())
 
+        add(EaseInCirc())
+        add(EaseOutCirc())
+        add(EaseInOutCirc())
+
         add(EaseInElastic())
         add(EaseOutElastic())
         add(EaseInOutElastic())

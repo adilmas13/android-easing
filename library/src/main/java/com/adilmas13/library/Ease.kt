@@ -55,6 +55,22 @@ class EaseInOutQuint : Ease {
         if(x < 0.5)  16 * x * x * x * x * x else 1 - (-2 * x + 2).pow(5) / 2;
 }
 
+/*Circ*/
+class EaseInCirc : Ease {
+    override fun calculate(x: Double) = 1 - Math.sqrt(1 - Math.pow(x, 2.0));
+}
+
+class EaseOutCirc : Ease {
+    override fun calculate(x: Double) = Math.sqrt(1 - Math.pow(x - 1, 2.0));
+}
+
+class EaseInOutCirc : Ease {
+    override fun calculate(x: Double) =
+       if ( x < 0.5)
+     (1 - Math.sqrt(1 - Math.pow(2 * x, 2.0))) / 2
+    else (Math.sqrt(1 - Math.pow(-2 * x + 2, 2.0)) + 1) / 2;
+}
+
 /*Elastic*/
 class EaseInElastic : Ease {
     override fun calculate(x: Double) = when (x) {
