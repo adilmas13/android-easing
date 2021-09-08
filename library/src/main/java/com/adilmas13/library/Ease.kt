@@ -27,6 +27,34 @@ class EaseInOutSine : Ease {
     override fun calculate(x: Double) = -(cos(PI * x) - 1) / 2f
 }
 
+/*Cubic*/
+class EaseInCubic : Ease {
+    override fun calculate(x: Double) = x * x * x
+}
+
+class EaseOutCubic : Ease {
+    override fun calculate(x: Double) = 1 - (1 - x).pow(3)
+}
+
+class EaseInOutCubic : Ease {
+    override fun calculate(x: Double) =
+        if (x < 0.5) 4 * x * x * x else 1 - (-2 * x + 2).pow(3.0) / 2
+}
+
+/*Quint*/
+class EaseInQuint : Ease {
+    override fun calculate(x: Double) = x * x * x * x * x
+}
+
+class EaseOutQuint : Ease {
+    override fun calculate(x: Double) = 1 - (1 - x).pow(5);
+}
+
+class EaseInOutQuint : Ease {
+    override fun calculate(x: Double) =
+        if(x < 0.5)  16 * x * x * x * x * x else 1 - (-2 * x + 2).pow(5) / 2;
+}
+
 /*Elastic*/
 class EaseInElastic : Ease {
     override fun calculate(x: Double) = when (x) {
