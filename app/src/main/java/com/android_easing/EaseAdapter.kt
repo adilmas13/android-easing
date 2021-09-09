@@ -10,7 +10,13 @@ class EaseAdapter(var eases: List<Ease>, var onClick: (ease: Ease) -> Unit) :
     RecyclerView.Adapter<EaseAdapter.EaseViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EaseViewHolder {
-        return EaseViewHolder(AdapterEaseBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return EaseViewHolder(
+            AdapterEaseBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: EaseViewHolder, position: Int) {

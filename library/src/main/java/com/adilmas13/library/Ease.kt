@@ -171,7 +171,9 @@ class EaseInOutBack : Ease {
     override fun calculate(x: Double): Double {
         val c1 = 1.70158
         val c2 = c1 * 1.525
-        return if (x < 0.5) ((2 * x).pow(2.0) * ((c2 + 1) * 2 * x - c2)) / 2.0 else ((2 * x - 2).pow(2.0) * ((c2 + 1) * (x * 2 - 2) + c2) + 2) / 2
+        return if (x < 0.5) ((2 * x).pow(2.0) * ((c2 + 1) * 2 * x - c2)) / 2.0 else ((2 * x - 2).pow(
+            2.0
+        ) * ((c2 + 1) * (x * 2 - 2) + c2) + 2) / 2
     }
 }
 
