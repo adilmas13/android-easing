@@ -11,6 +11,7 @@
         android:id="@+id/graph"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="#334756"
         app:layout_constraintDimensionRatio="W, 1:1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

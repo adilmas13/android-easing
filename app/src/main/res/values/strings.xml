@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">android-easing</string>
+    <string name="image">Image</string>
+    <string name="graph">Graph</string>
 </resources>

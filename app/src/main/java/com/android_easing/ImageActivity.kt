@@ -9,7 +9,7 @@ import com.android_easing.databinding.ActivityImageBinding
 class ImageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityImageBinding
     private var easing: EasingManager? = null
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityImageBinding.inflate(layoutInflater)
