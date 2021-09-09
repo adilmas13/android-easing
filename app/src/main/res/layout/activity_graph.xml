@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#2C394B"
-    tools:context=".MainActivity">
+    tools:context=".GraphActivity">
 
     <com.android_easing.view.EasingView
         android:id="@+id/graph"
