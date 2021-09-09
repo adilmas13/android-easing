@@ -59,7 +59,7 @@ class EasingView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         invalidate()
     }
 
-    fun clear(){
+    fun clear() {
         easeLine.clear()
     }
 }

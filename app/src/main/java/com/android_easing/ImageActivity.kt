@@ -31,8 +31,8 @@ class ImageActivity : AppCompatActivity() {
                 easing?.destroy()
                 easing = EasingManager(ease = ease, duration = 2000f)
                     .onProgress { value, _ ->
-                    binding.ivImage.alpha = value.toFloat()
-                }
+                        binding.ivImage.alpha = value.toFloat()
+                    }
                 easing?.start()
             }
         }

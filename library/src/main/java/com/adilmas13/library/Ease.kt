@@ -1,9 +1,6 @@
 package com.adilmas13.library
 
-import kotlin.math.PI
-import kotlin.math.cos
-import kotlin.math.pow
-import kotlin.math.sin
+import kotlin.math.*
 
 interface Ease {
     fun calculate(x: Double): Double
@@ -47,28 +44,28 @@ class EaseInQuint : Ease {
 }
 
 class EaseOutQuint : Ease {
-    override fun calculate(x: Double) = 1 - (1 - x).pow(5);
+    override fun calculate(x: Double) = 1 - (1 - x).pow(5)
 }
 
 class EaseInOutQuint : Ease {
     override fun calculate(x: Double) =
-        if(x < 0.5)  16 * x * x * x * x * x else 1 - (-2 * x + 2).pow(5) / 2;
+        if (x < 0.5) 16 * x * x * x * x * x else 1 - (-2 * x + 2).pow(5) / 2
 }
 
 /*Circ*/
 class EaseInCirc : Ease {
-    override fun calculate(x: Double) = 1 - Math.sqrt(1 - Math.pow(x, 2.0));
+    override fun calculate(x: Double) = 1 - sqrt(1 - x.pow(2.0))
 }
 
 class EaseOutCirc : Ease {
-    override fun calculate(x: Double) = Math.sqrt(1 - Math.pow(x - 1, 2.0));
+    override fun calculate(x: Double) = sqrt(1 - (x - 1).pow(2.0))
 }
 
 class EaseInOutCirc : Ease {
     override fun calculate(x: Double) =
-       if ( x < 0.5)
-     (1 - Math.sqrt(1 - Math.pow(2 * x, 2.0))) / 2
-    else (Math.sqrt(1 - Math.pow(-2 * x + 2, 2.0)) + 1) / 2;
+        if (x < 0.5)
+            (1 - sqrt(1 - (2 * x).pow(2.0))) / 2
+        else (sqrt(1 - (-2 * x + 2).pow(2.0)) + 1) / 2
 }
 
 /*Elastic*/
@@ -117,77 +114,77 @@ class EaseOutQuad : Ease {
 
 class EaseInOutQuad : Ease {
     override fun calculate(x: Double) =
-        if(x < 0.5)  2 * x * x else 1 - Math.pow(-2 * x + 2, 2.0) / 2;
+        if (x < 0.5) 2 * x * x else 1 - (-2 * x + 2).pow(2.0) / 2
 }
 
 /*Quart*/
 class EaseInQuart : Ease {
-    override fun calculate(x: Double) = x * x * x * x;
+    override fun calculate(x: Double) = x * x * x * x
 }
 
 class EaseOutQuart : Ease {
-    override fun calculate(x: Double) = 1 - Math.pow(1 - x, 4.0);
+    override fun calculate(x: Double) = 1 - (1 - x).pow(4.0)
 }
 
 class EaseInOutQuart : Ease {
     override fun calculate(x: Double) =
-        if (x < 0.5)  8 * x * x * x * x else 1 - Math.pow(-2 * x + 2, 4.0) / 2;
+        if (x < 0.5) 8 * x * x * x * x else 1 - (-2 * x + 2).pow(4.0) / 2
 }
 
 /*Expo*/
 class EaseInExpo : Ease {
-    override fun calculate(x: Double) = if (x == 0.0) 0.0 else Math.pow(2.0, 10 * x - 10)
+    override fun calculate(x: Double) = if (x == 0.0) 0.0 else 2.0.pow(10 * x - 10)
 }
 
 class EaseOutExpo : Ease {
-    override fun calculate(x: Double) = if (x == 1.0) 1.0 else 1 - Math.pow(2.0, -10 * x);
+    override fun calculate(x: Double) = if (x == 1.0) 1.0 else 1 - 2.0.pow(-10 * x)
 }
 
 class EaseInOutExpo : Ease {
     override fun calculate(x: Double) =
-       when{
-           (x==0.0) -> 0.0
-           (x==1.0) -> 1.0
-           (x < 0.5) -> Math.pow(2.0, 20 * x - 10) / 2
-           else -> (2 - Math.pow(2.0, -20 * x + 10)) / 2
-       }
+        when {
+            (x == 0.0) -> 0.0
+            (x == 1.0) -> 1.0
+            (x < 0.5) -> 2.0.pow(20 * x - 10) / 2
+            else -> (2 - 2.0.pow(-20 * x + 10)) / 2
+        }
 }
 
 /*Back*/
 class EaseInBack : Ease {
     override fun calculate(x: Double): Double {
-        val c1 = 1.70158;
+        val c1 = 1.70158
         val c3 = c1 + 1
-        return c3 * x * x * x - c1 * x * x;
+        return c3 * x * x * x - c1 * x * x
     }
 }
 
 class EaseOutBack : Ease {
-    override fun calculate(x: Double) : Double{
-        val c1 = 1.70158;
-        val c3 = c1 + 1;
-        return 1 + c3 * Math.pow(x - 1, 3.0) + c1 * Math.pow(x - 1, 2.0);
+    override fun calculate(x: Double): Double {
+        val c1 = 1.70158
+        val c3 = c1 + 1
+        return 1 + c3 * (x - 1).pow(3.0) + c1 * (x - 1).pow(2.0)
     }
 }
 
 class EaseInOutBack : Ease {
-    override fun calculate(x: Double) : Double{
-        val c1 = 1.70158;
-        val c2 = c1 * 1.525;
-        return if (x < 0.5) (Math.pow(2 * x, 2.0) * ((c2 + 1) * 2 * x - c2)) / 2.0 else (Math.pow(2 * x - 2, 2.0) * ((c2 + 1) * (x * 2 - 2) + c2) + 2) / 2
+    override fun calculate(x: Double): Double {
+        val c1 = 1.70158
+        val c2 = c1 * 1.525
+        return if (x < 0.5) ((2 * x).pow(2.0) * ((c2 + 1) * 2 * x - c2)) / 2.0 else ((2 * x - 2).pow(2.0) * ((c2 + 1) * (x * 2 - 2) + c2) + 2) / 2
     }
 }
 
 /*Bounce*/
 class EaseInBounce : Ease {
-    override fun calculate(x: Double) = 1 - EaseOutBounce().calculate(1 - x);
+    override fun calculate(x: Double) = 1 - EaseOutBounce().calculate(1 - x)
 }
 
 class EaseOutBounce : Ease {
-    override fun calculate(x: Double) : Double{
-        val n1 = 7.5625;
-        val d1 = 2.75;
-        return when{
+    override fun calculate(x: Double): Double {
+        val n1 = 7.5625
+        val d1 = 2.75
+        return when {
             (x < 1 / d1) -> n1 * x * x
             (x < 2 / d1) -> {
                 val tempX = x - 1.5 / d1
@@ -195,16 +192,19 @@ class EaseOutBounce : Ease {
             }
             (x < 2.5 / d1) -> {
                 val tempX = x - 2.25 / d1
-               return n1 * tempX * tempX + 0.9375
+                return n1 * tempX * tempX + 0.9375
             }
             else -> {
                 val tempX = x - 2.625 / d1
-               return n1 * tempX * tempX + 0.984375
+                return n1 * tempX * tempX + 0.984375
             }
         }
     }
 }
 
 class EaseInOutBounce : Ease {
-    override fun calculate(x: Double) = if (x < 0.5) (1 - EaseOutBounce().calculate(1 - 2 * x)) / 2 else (1 + EaseOutBounce().calculate(2 * x - 1)) / 2
+    override fun calculate(x: Double) =
+        if (x < 0.5) (1 - EaseOutBounce().calculate(1 - 2 * x)) / 2 else (1 + EaseOutBounce().calculate(
+            2 * x - 1
+        )) / 2
 }

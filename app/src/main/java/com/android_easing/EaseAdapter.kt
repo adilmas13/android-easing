@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.adilmas13.library.Ease
 import com.android_easing.databinding.AdapterEaseBinding
 
-class EaseAdapter(var eases: List<Ease>, var onClick:(ease: Ease) -> Unit): RecyclerView.Adapter<EaseAdapter.EaseViewHolder>() {
+class EaseAdapter(var eases: List<Ease>, var onClick: (ease: Ease) -> Unit) :
+    RecyclerView.Adapter<EaseAdapter.EaseViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EaseViewHolder {
         return EaseViewHolder(AdapterEaseBinding.inflate(LayoutInflater.from(parent.context)))
@@ -18,7 +19,8 @@ class EaseAdapter(var eases: List<Ease>, var onClick:(ease: Ease) -> Unit): Recy
 
     override fun getItemCount() = eases.size
 
-    inner class EaseViewHolder(var binding: AdapterEaseBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class EaseViewHolder(var binding: AdapterEaseBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(ease: com.adilmas13.library.Ease) {
             binding.tvEase.text = ease.javaClass.simpleName
