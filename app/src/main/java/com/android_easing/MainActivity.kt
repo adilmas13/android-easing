@@ -32,6 +32,26 @@ class MainActivity : AppCompatActivity() {
         add(EaseInElastic())
         add(EaseOutElastic())
         add(EaseInOutElastic())
+
+        add(EaseInQuad())
+        add(EaseOutQuad())
+        add(EaseInOutQuad())
+
+        add(EaseInQuart())
+        add(EaseOutQuart())
+        add(EaseInOutQuart())
+
+        add(EaseInExpo())
+        add(EaseOutExpo())
+        add(EaseInOutExpo())
+
+        add(EaseInBack())
+        add(EaseOutBack())
+        add(EaseInOutBack())
+
+        add(EaseInBounce())
+        add(EaseOutBounce())
+        add(EaseInOutBounce())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
