@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2C394B"
+    android:background="@color/primary"
     tools:context=".MainActivity">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_height="0dp"
         android:gravity="center"
         android:text="@string/graph"
-        android:textColor="#dddddd"
+        android:textColor="@color/text_color"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tvImage"
@@ -25,10 +25,10 @@
         android:id="@+id/tvImage"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#334756"
+        android:background="@color/secondary"
         android:gravity="center"
         android:text="@string/image"
-        android:textColor="#dddddd"
+        android:textColor="@color/text_color"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
