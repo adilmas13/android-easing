@@ -61,9 +61,10 @@ class MainActivity : AppCompatActivity() {
         binding.rvEase.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = EaseAdapter(list) { ease ->
-                easing?.destroy()
+                binding.tvEase.text = ease.javaClass.simpleName
                 binding.graph.clear()
-                easing = com.adilmas13.library.EasingManager(ease = ease, duration = 2000f)
+                easing?.destroy()
+                easing = EasingManager(ease = ease, duration = 2000f)
                     .onProgress { value, progress -> binding.graph.plot(value, progress) }
                 easing?.start()
             }
