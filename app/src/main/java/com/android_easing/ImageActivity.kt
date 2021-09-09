@@ -15,8 +15,9 @@ class ImageActivity : AppCompatActivity() {
         binding = ActivityImageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.rvEase.onSelect { ease ->
+            binding.tvEase.text = ease.javaClass.simpleName
             easing?.destroy()
-            easing = EasingManager(ease = ease, duration = 2000f)
+            easing = EasingManager(ease = ease, duration = 3000f)
                 .onProgress { value, _ ->
                     binding.ivImage.alpha = value.toFloat()
                 }

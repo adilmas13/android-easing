@@ -2,7 +2,7 @@ package com.android_easing.view
 
 import android.content.Context
 import android.util.AttributeSet
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.adilmas13.library.*
 import com.android_easing.EaseAdapter
@@ -58,7 +58,7 @@ class EaseRecyclerView(context: Context, attrs: AttributeSet) : RecyclerView(con
     }
 
     private fun setup() {
-        layoutManager = LinearLayoutManager(context)
+        layoutManager = GridLayoutManager(context, 2)
         adapter = EaseAdapter(list) { onSelectCallback?.invoke(it) }
     }
 
