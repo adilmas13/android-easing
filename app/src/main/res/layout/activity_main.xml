@@ -28,7 +28,7 @@
         android:textStyle="bold"
         android:layout_marginBottom="24dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.android_easing.view.EaseRecyclerView
         android:id="@+id/rvEase"
         android:layout_width="0dp"
         android:layout_height="0dp"
