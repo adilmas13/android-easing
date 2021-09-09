@@ -14,7 +14,7 @@ class Circle {
 
     init {
         paint.apply {
-            color = Color.rgb(0, 154, 255)
+            color = Color.parseColor("#FF4C29")
             style = Paint.Style.FILL
         }
     }

@@ -11,8 +11,8 @@ class EaseLine {
 
     init {
         paint.apply {
-            color = Color.rgb(174, 174, 174)
-            strokeWidth = 12.toFloat()
+            color = Color.rgb(255, 255, 255)
+            strokeWidth = 6.toFloat()
             style = Paint.Style.STROKE
             strokeCap = Paint.Cap.ROUND
         }

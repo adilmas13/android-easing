@@ -28,7 +28,7 @@ class EasingView(context: Context, attrs: AttributeSet) : View(context, attrs) {
                 pxToDP(20f)
             )
             easeLine.draw(it)
-            circle.x = width.toFloat() - 40
+            circle.x = width.toFloat() - 30
             if (circle.isFirstDraw) {
                 circle.y = height.toFloat() - spacing
                 circle.isFirstDraw = false

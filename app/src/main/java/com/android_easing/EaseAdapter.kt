@@ -10,7 +10,7 @@ class EaseAdapter(var eases: List<Ease>, var onClick: (ease: Ease) -> Unit) :
     RecyclerView.Adapter<EaseAdapter.EaseViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EaseViewHolder {
-        return EaseViewHolder(AdapterEaseBinding.inflate(LayoutInflater.from(parent.context)))
+        return EaseViewHolder(AdapterEaseBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: EaseViewHolder, position: Int) {
@@ -22,9 +22,9 @@ class EaseAdapter(var eases: List<Ease>, var onClick: (ease: Ease) -> Unit) :
     inner class EaseViewHolder(var binding: AdapterEaseBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(ease: com.adilmas13.library.Ease) {
+        fun bind(ease: Ease) {
             binding.tvEase.text = ease.javaClass.simpleName
-            binding.tvEase.setOnClickListener { onClick(ease) }
+            binding.root.setOnClickListener { onClick(ease) }
         }
     }
 }

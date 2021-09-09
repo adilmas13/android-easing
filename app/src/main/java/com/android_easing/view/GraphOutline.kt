@@ -12,13 +12,13 @@ class GraphOutline {
 
     init {
         paint.apply {
-            color = Color.rgb(77, 83, 96)
+            color = Color.rgb(255, 255, 255)
             strokeWidth = 5.toFloat()
             style = Paint.Style.STROKE
             strokeCap = Paint.Cap.ROUND
         }
         textPaint.apply {
-            color = Color.rgb(77, 83, 96)
+            color = Color.rgb(255, 255, 255)
             style = Paint.Style.FILL
         }
     }
